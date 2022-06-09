@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.fastfoodapp.DialogBacktoLogin;
 import com.example.fastfoodapp.Fragment.GioHangFragment;
 import com.example.fastfoodapp.Fragment.HomeFragment;
+import com.example.fastfoodapp.Fragment.UserFragment;
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.Utils.Common;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class HomeActivity extends AppCompatActivity {
@@ -31,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
                     .commit();
         }
         setFrameLayout();
+        SharedPreferences sharedPreferences = getSharedPreferences("dataLogin",MODE_PRIVATE);
+        Common.SDTuser = sharedPreferences.getString("sdt",null);
     }
 
     private void setFrameLayout() {
@@ -47,7 +53,11 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.giohang:
                         fragment = new GioHangFragment();
                         break;
-                    default: break;
+                    case R.id.account:
+                        fragment = new UserFragment();
+                        break;
+                    default:
+                        break;
                 }
                 if (fragment != null) {
                     fragmentManager = getSupportFragmentManager();

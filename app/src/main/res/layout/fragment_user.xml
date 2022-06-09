@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8"
+    tools:context=".Fragment.UserFragment">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cover" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="60dp"
+        android:elevation="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:cardCornerRadius="100dp">
+
+                <ImageView
+                    android:id="@+id/img_avatarUser"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/avataruser" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_hoTen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/semi_bold"
+                    android:text="username"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_nhan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_item_red"
+                    android:backgroundTint="#FF5722"
+                    android:paddingHorizontal="10dp"
+                    android:text="Member"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@color/white"
+                android:elevation="16dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnDonMua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/ic_baseline_event_note_24"
+                    android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/color_primary"
+                    android:elevation="30dp"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Đơn mua"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_primary"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/btn_LsuMua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/ic_baseline_history_24"
+                    android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#673AB7"
+                    android:elevation="30dp"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Lịch sử mua hàng"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/btnEditUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/user_icon"
+                    android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#0027FF"
+                    android:elevation="30dp"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Thiết lập tài khoản"
+                    android:textAllCaps="false"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/btnAddShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/shop"
+                    android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#FF5722"
+                    android:elevation="30dp"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:text="Tạo cửa hàng của bạn"
+                    android:textAllCaps="false"
+                    android:textColor="#FF5722"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:elevation="16dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnHelp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:drawableStart="@drawable/ic_baseline_help_outline_24"
+                        android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="#4CAF50"
+                        android:elevation="16dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:text="Trung tâm trợ giúp"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/btnLogout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white"
+                        android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
+                        android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                        android:drawablePadding="10dp"
+                        android:elevation="30dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:text="Đăng xuất"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/igb_BackUser"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="left|top"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_round_btn"
+        android:padding="10dp"
+        android:src="@drawable/back_icon" />
+
+</FrameLayout>

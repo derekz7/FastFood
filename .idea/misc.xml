@@ -3,20 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/bg_corner_topleft.xml" value="0.1655" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/bg_item.xml" value="0.153" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/bg_item_red.xml" value="0.153" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/bg_itemsp.xml" value="0.153" />
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/bg_round_btn.xml" value="0.1655" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/corner_image.xml" value="0.153" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/edt_bg.xml" value="0.153" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/ic_add_circle.xml" value="0.153" />
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.1655" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.153" />
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/activity_detail_product.xml" value="0.10400000000000001" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/activity_home.xml" value="0.23645833333333333" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/activity_sign_up.xml" value="0.23645833333333333" />
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/dialog_backtologin.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/dialog_loading.xml" value="0.128" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/fragment_gio_hang.xml" value="0.23645833333333333" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/fragment_user.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/item_danhmuc.xml" value="0.536" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/layout/item_sanpham.xml" value="0.536" />
         <entry key="..\:/AndroidStudioProjects/FastFoodApp/app/src/main/res/menu/nav_bottom.xml" value="0.23645833333333333" />
@@ -28,5 +34,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.176" />
+      </ProjectState>
+    </option>
   </component>
 </project>

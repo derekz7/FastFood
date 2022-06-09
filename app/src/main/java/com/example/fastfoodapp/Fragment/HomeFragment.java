@@ -1,6 +1,8 @@
 package com.example.fastfoodapp.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +24,22 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.fastfoodapp.API.ApiService;
+import com.example.fastfoodapp.Activities.DetailProductActivity;
 import com.example.fastfoodapp.Adapters.CategoryAdapter;
 import com.example.fastfoodapp.Adapters.SanPhamAdapter;
 import com.example.fastfoodapp.DialogLoading;
 import com.example.fastfoodapp.Models.Banner;
 import com.example.fastfoodapp.Models.DanhMuc;
+import com.example.fastfoodapp.Models.NguoiDung;
 import com.example.fastfoodapp.Models.SanPham;
 import com.example.fastfoodapp.R;
+import com.example.fastfoodapp.Utils.Common;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.shadow.ShadowRenderer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +60,7 @@ public class HomeFragment extends Fragment {
     private List<SlideModel> slideModels;
     private TextView titleSP, tv_title;
     private DialogLoading dialogLoading;
+    private ImageView img_Profile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,9 +75,39 @@ public class HomeFragment extends Fragment {
         setLayout();
         loadData();
         onClick();
+
     }
 
+    private void getUser() {
+        if (Common.SDTuser != null){
+            ApiService.api.checkSDT(Common.SDTuser).enqueue(new Callback<NguoiDung>() {
+                @Override
+                public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null){
+                            Common.userLog = response.body();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<NguoiDung> call, Throwable t) {
+
+                }
+            });
+        }
+    }
+
+
     private void onClick() {
+        sanPhamAdapter.setOnItemClickListener(new SanPhamAdapter.onItemCLickListener() {
+            @Override
+            public void onItemClick(int pos, View view) {
+                Common.sanPham = sanPhamList.get(pos);
+                startActivity(new Intent(getContext(), DetailProductActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+
         categoryAdapter.setOnItemClickListener(new CategoryAdapter.onItemCLickListener() {
             @Override
             public void onItemClick(int pos, View view) {
@@ -122,6 +161,12 @@ public class HomeFragment extends Fragment {
         manager.setJustifyContent(JustifyContent.CENTER);
         rec_SP.setLayoutManager(manager);
         rec_SP.setNestedScrollingEnabled(false);
+        getUser();
+        if (Common.userLog != null){
+            if (Common.userLog.getImgND() != null){
+                Picasso.get().load(Common.userLog.getImgND()).into(img_Profile);
+            }
+        }
     }
 
     private void loadData() {
@@ -196,6 +241,7 @@ public class HomeFragment extends Fragment {
         rec_SP = view.findViewById(R.id.rec_SP);
         titleSP = view.findViewById(R.id.tv_titleSP);
         tv_title = view.findViewById(R.id.tv_title);
+        img_Profile = view.findViewById(R.id.img_Profile);
         sanPhamList = new ArrayList<>();
         danhMucList = new ArrayList<>();
         slideModels = new ArrayList<>();

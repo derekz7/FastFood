@@ -9,11 +9,12 @@ public class SanPham {
     private int Gia;
     private int soLuong;
     private String ImgSP;
+    private String moTaSP;
 
     public SanPham() {
     }
 
-    public SanPham(String IDSP, String tenSP, String IDDanhMuc, String IDShop, int danhGia, int gia, int soLuong, String imgSP) {
+    public SanPham(String IDSP, String tenSP, String IDDanhMuc, String IDShop, int danhGia, int gia, int soLuong, String imgSP, String moTaSP) {
         this.IDSP = IDSP;
         TenSP = tenSP;
         this.IDDanhMuc = IDDanhMuc;
@@ -22,6 +23,7 @@ public class SanPham {
         Gia = gia;
         this.soLuong = soLuong;
         ImgSP = imgSP;
+        this.moTaSP = moTaSP;
     }
 
     public String getIDSP() {
@@ -86,5 +88,13 @@ public class SanPham {
 
     public void setImgSP(String imgSP) {
         ImgSP = imgSP;
+    }
+
+    public String getMoTaSP() {
+        return moTaSP;
+    }
+
+    public void setMoTaSP(String moTaSP) {
+        this.moTaSP = moTaSP;
     }
 }

@@ -2,6 +2,8 @@ package com.example.fastfoodapp.API;
 
 import com.example.fastfoodapp.Models.Banner;
 import com.example.fastfoodapp.Models.DanhMuc;
+import com.example.fastfoodapp.Models.HinhAnh;
+import com.example.fastfoodapp.Models.NguoiDung;
 import com.example.fastfoodapp.Models.SanPham;
 import com.example.fastfoodapp.Utils.Common;
 import com.google.gson.Gson;
@@ -30,6 +32,18 @@ public interface ApiService {
             .client(okHttpClient)
             .build()
             .create(ApiService.class);
+
+
+    //tài khoản
+    @GET("api/NguoiDungs/checksdt")
+    Call<NguoiDung> checkSDT(@Query("sdt") String sdt);
+
+    @GET("api/NguoiDungs/DangNhap")
+    Call<Boolean> dangNhap(@Query("sdt") String sdt, @Query("password") String password);
+
+    //hình ảnh sản phẩm
+    @GET("api/HinhAnhs/getImageSP")
+    Call<List<HinhAnh>> getHinhAnhs(@Query("idSP") String idSP);
 
     @GET("api/Banners")
     Call<List<Banner>> getBanner();

@@ -30,6 +30,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
         void onItemClick(int pos, View view);
     }
 
+    public void setOnItemClickListener(SanPhamAdapter.onItemCLickListener mListener) {
+        this.mListener = mListener;
+    }
+
     public SanPhamAdapter(Context mcontext, List<SanPham> listSp) {
         this.mcontext = mcontext;
         this.listSp = listSp;
