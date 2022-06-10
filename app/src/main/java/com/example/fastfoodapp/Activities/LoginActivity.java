@@ -27,7 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText edtEmail, edtPass;
+    private EditText edtUsername, edtPass;
     private CheckBox cbRemember;
     private Button btn_SignIn;
     private TextView tv_SignUp;
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         init();
         onClick();
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
-        edtEmail.setText(sharedPreferences.getString("sdt", ""));
+        edtUsername.setText(sharedPreferences.getString("username", ""));
         edtPass.setText(sharedPreferences.getString("pass", ""));
         cbRemember.setChecked(sharedPreferences.getBoolean("checked", false));
     }
@@ -54,31 +54,31 @@ public class LoginActivity extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sdt = edtEmail.getText().toString();
+                String username = edtUsername.getText().toString();
                 String pass= edtPass.getText().toString();
                 DialogLoading dialogLoading = new DialogLoading(LoginActivity.this);
-                if (sdt.length() ==0){
-                    edtEmail.setError("SDT không được để trống!");
+                if (username.length() ==0){
+                    edtUsername.setError("Tên người dùng không được để trống!");
                 }else if (pass.length() == 0){
                     edtPass.setError("Mật khẩu không được để trống!");
                 }else {
                     dialogLoading.show();
-                    ApiService.api.dangNhap(sdt,pass).enqueue(new Callback<Boolean>() {
+                    ApiService.api.dangNhap(username,pass).enqueue(new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                             if(response.isSuccessful()){
                                 dialogLoading.dismissDialog();
                                 if (Boolean.TRUE.equals(response.body())){
-                                    getUserLog(sdt);
+                                    getUserLog(username);
                                     if (cbRemember.isChecked()){
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString("sdt", sdt);
+                                        editor.putString("username", username);
                                         editor.putString("pass", pass);
                                         editor.putBoolean("checked", true);
                                         editor.apply();
                                     }else {
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.remove("sdt");
+                                        editor.remove("username");
                                         editor.remove(pass);
                                         editor.remove("checked");
                                         editor.apply();
@@ -101,8 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void getUserLog(String sdt){
-        ApiService.api.checkSDT(sdt).enqueue(new Callback<NguoiDung>() {
+    private void getUserLog(String username){
+        ApiService.api.getNDbyUsername(username).enqueue(new Callback<NguoiDung>() {
             @Override
             public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
                 if (response.isSuccessful()){
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init(){
-        edtEmail = findViewById(R.id.edt_email);
+        edtUsername = findViewById(R.id.edt_email);
         edtPass = findViewById(R.id.edt_password);
         cbRemember = findViewById(R.id.cb_remember);
         btn_SignIn = findViewById(R.id.btn_signIn);

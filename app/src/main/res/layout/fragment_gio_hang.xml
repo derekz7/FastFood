@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Fragment.GioHangFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/semi_bold"
+            android:text="Bạn có 3 sản phẩm trong giỏ"
+            android:textColor="#1e095f"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_GioHang"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_DatHang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+
+
+
+        <Button
+            android:id="@+id/btn_DatHang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cart_button_bg"
+            android:backgroundTint="@color/color_button"
+            android:fontFamily="@font/semi_bold"
+            android:text="@string/dat_hang"
+            android:layout_marginTop="20dp"
+            android:textAllCaps="false"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"/>
+
+
+
+
+    </LinearLayout>
+
+
+
 
 </FrameLayout>

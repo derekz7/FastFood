@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="4"
-    android:background="@color/color_primary">
+    android:background="@color/color_button">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                 android:drawableEnd="@drawable/user_icon"
                 android:fontFamily="@font/segoe_ui"
                 android:gravity="center_vertical"
-                android:hint="@string/email_phone_number"
+                android:hint="@string/username"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="26dp"
@@ -121,7 +121,7 @@
                 android:fontFamily="@font/segoe_ui"
                 android:gravity="center_vertical"
                 android:minHeight="48dp"
-                android:text="@string/remember_me"
+                android:text="Nhớ mật khẩu"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -151,7 +151,7 @@
                     android:layout_height="52dp"
                     android:layout_weight="1"
                     android:background="@drawable/cart_button_bg"
-                    android:backgroundTint="@color/color_primary"
+                    android:backgroundTint="@color/color_button"
                     android:fontFamily="@font/segoe_ui_bold"
                     android:gravity="center"
                     android:text="@string/sign_in"
@@ -189,7 +189,7 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/segoe_ui_bold"
                 android:text="@string/sign_up"
-                android:textColor="@color/color_primary"
+                android:textColor="@color/text_green"
                 android:textSize="18sp" />
         </LinearLayout>
 

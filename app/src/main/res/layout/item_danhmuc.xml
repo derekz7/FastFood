@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:background="@drawable/bg_item"
-            android:src="@drawable/cat_1" />
+            android:src="@drawable/coca" />
 
         <TextView
             android:id="@+id/tv_tenDM"

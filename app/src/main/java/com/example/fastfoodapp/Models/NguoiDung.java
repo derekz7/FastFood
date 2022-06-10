@@ -1,43 +1,31 @@
 package com.example.fastfoodapp.Models;
 
 public class NguoiDung {
-    private String ID;
-    private String Email;
+    private String Username;
     private String HoTen;
     private String SDT;
     private String matKhau;
     private String DiaChi;
     private String ImgND;
-    private String IDShop;
 
     public NguoiDung() {
     }
 
-    public NguoiDung(String ID, String email, String hoTen, String SDT, String matKhau, String diaChi, String imgND) {
-        this.ID = ID;
-        Email = email;
-        HoTen = hoTen;
+    public NguoiDung( String username, String hoTen, String SDT, String matKhau) {
+        this.Username = username;
+        this.HoTen = hoTen;
         this.SDT = SDT;
         this.matKhau = matKhau;
-        DiaChi = diaChi;
-        ImgND = imgND;
-        this.IDShop = null;
+        this.DiaChi = "";
+        this.ImgND = "";
     }
 
-    public String getID() {
-        return ID;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getHoTen() {
@@ -80,11 +68,4 @@ public class NguoiDung {
         ImgND = imgND;
     }
 
-    public String getIDShop() {
-        return IDShop;
-    }
-
-    public void setIDShop(String IDShop) {
-        this.IDShop = IDShop;
-    }
 }

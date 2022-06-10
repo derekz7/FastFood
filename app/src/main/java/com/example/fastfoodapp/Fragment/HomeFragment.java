@@ -1,5 +1,8 @@
 package com.example.fastfoodapp.Fragment;
 
+import static com.example.fastfoodapp.Utils.Common.danhMucList;
+import static com.example.fastfoodapp.Utils.Common.sanPhamList;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -54,8 +58,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView rec_DM, rec_SP;
     private SanPhamAdapter sanPhamAdapter;
     private CategoryAdapter categoryAdapter;
-    private List<DanhMuc> danhMucList;
-    private List<SanPham> sanPhamList;
     private ImageSlider imageSlider;
     private List<SlideModel> slideModels;
     private TextView titleSP, tv_title;
@@ -72,20 +74,28 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init(view);
+        getUser();
         setLayout();
         loadData();
         onClick();
 
+
     }
 
     private void getUser() {
-        if (Common.SDTuser != null){
-            ApiService.api.checkSDT(Common.SDTuser).enqueue(new Callback<NguoiDung>() {
+        if (Common.username != null){
+            ApiService.api.getNDbyUsername(Common.username).enqueue(new Callback<NguoiDung>() {
                 @Override
                 public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
                     if (response.isSuccessful()){
                         if (response.body() != null){
                             Common.userLog = response.body();
+                            if (response.body().getImgND().equals("")){
+                                img_Profile.setImageResource(R.drawable.avataruser);
+                            }else {
+                                Glide.with(getContext()).load(response.body().getImgND()).into(img_Profile);
+                            }
+
                         }
                     }
                 }
@@ -137,10 +147,10 @@ public class HomeFragment extends Fragment {
                     for (SanPham sanPham : response.body()
                     ) {
                         sanPhamList.add(sanPham);
-                        sanPhamAdapter.notifyDataSetChanged();
+
                     }
+                    sanPhamAdapter.notifyDataSetChanged();
                 }
-                sanPhamAdapter.notifyDataSetChanged();
                 dialogLoading.dismissDialog();
             }
 
@@ -153,6 +163,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setLayout() {
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         rec_DM.setLayoutManager(linearLayoutManager);
 //        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
@@ -161,12 +172,6 @@ public class HomeFragment extends Fragment {
         manager.setJustifyContent(JustifyContent.CENTER);
         rec_SP.setLayoutManager(manager);
         rec_SP.setNestedScrollingEnabled(false);
-        getUser();
-        if (Common.userLog != null){
-            if (Common.userLog.getImgND() != null){
-                Picasso.get().load(Common.userLog.getImgND()).into(img_Profile);
-            }
-        }
     }
 
     private void loadData() {

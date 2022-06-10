@@ -1,5 +1,7 @@
 package com.example.fastfoodapp.Adapters;
 
+import static com.example.fastfoodapp.Utils.Common.gioHangList;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fastfoodapp.Models.DanhMuc;
+import com.bumptech.glide.Glide;
+import com.example.fastfoodapp.Models.GioHang;
+import com.example.fastfoodapp.Utils.Common;
 import com.example.fastfoodapp.Models.SanPham;
 import com.example.fastfoodapp.R;
-import com.example.fastfoodapp.Utils.Common;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -57,9 +61,16 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
         if (sanPham == null) {
             return;
         }
-        Picasso.get().load(sanPham.getImgSP()).into(holder.img_SP);
+        Glide.with(mcontext).load(sanPham.getImgSP()).into(holder.img_SP);
         holder.tv_TenSP.setText(sanPham.getTenSP());
         holder.tv_Gia.setText(Common.formatMoney(sanPham.getGia()));
+        holder.igb_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GioHang gioHang = new GioHang(sanPham.getIDSP(),sanPham.getTenSP(),sanPham.getImgSP(),sanPham.getGia(),1);
+                Common.themGioHang(gioHang,mcontext);
+            }
+        });
     }
 
     @Override
@@ -93,12 +104,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
                     }
                 }
             });
-            igb_add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-                }
-            });
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.fastfoodapp.Activities;
 
+import static com.example.fastfoodapp.Utils.Common.gioHangList;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,7 +10,6 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.fastfoodapp.DialogBacktoLogin;
 import com.example.fastfoodapp.Fragment.GioHangFragment;
 import com.example.fastfoodapp.Fragment.HomeFragment;
 import com.example.fastfoodapp.Fragment.UserFragment;
@@ -36,7 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         }
         setFrameLayout();
         SharedPreferences sharedPreferences = getSharedPreferences("dataLogin",MODE_PRIVATE);
-        Common.SDTuser = sharedPreferences.getString("sdt",null);
+        Common.username = sharedPreferences.getString("username",null);
+
     }
 
     private void setFrameLayout() {
@@ -49,12 +51,15 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i) {
                     case R.id.home:
                         fragment = new HomeFragment();
+                       
                         break;
                     case R.id.giohang:
                         fragment = new GioHangFragment();
+
                         break;
                     case R.id.account:
                         fragment = new UserFragment();
+
                         break;
                     default:
                         break;
@@ -78,5 +83,13 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (gioHangList != null && gioHangList.size() > 0){
+            chipNavigationBar.showBadge(R.id.giohang,gioHangList.size());
+        }
     }
 }

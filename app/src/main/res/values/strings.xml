@@ -109,4 +109,7 @@
     </string>
     <string name="chua_dang_nhap">Hình như bạn chưa đăng nhập :(</string>
     <string name="back_to_login_"><![CDATA[>> Back to Login <<]]></string>
+    <string name="username">Username</string>
+    <string name="dat_hang">Đặt hàng</string>
+    <string name="thong_tin_don_hang">Thông tin đơn hàng</string>
 </resources>

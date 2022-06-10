@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.fastfoodapp.Models.DanhMuc;
 import com.example.fastfoodapp.R;
 import com.squareup.picasso.Picasso;
@@ -60,7 +61,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         if (danhMuc == null) {
             return;
         }
-        Picasso.get().load(danhMuc.getImgDM()).into(holder.img_DM);
+        Glide.with(mcontext).load(danhMuc.getImgDM()).into(holder.img_DM);
         holder.tv_DM.setText(danhMuc.getTenDanhMuc());
         if (row_index == pos){
             holder.img_DM.setBackgroundResource(R.drawable.bg_item_red);

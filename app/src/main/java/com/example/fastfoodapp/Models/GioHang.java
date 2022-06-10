@@ -1,51 +1,61 @@
 package com.example.fastfoodapp.Models;
 
 public class GioHang {
-    private int IDGH;
-    private String ID;
-    private String IDSP;
-    private int SoLuong;
+    private String idSP;
+    private String tenSP;
+    private String imgUrl;
+    private int Gia;
+    private int soLuong;
 
 
     public GioHang() {
     }
 
-    public GioHang(int IDGH, String ID, String IDSP, int soLuong) {
-        this.IDGH = IDGH;
-        this.ID = ID;
-        this.IDSP = IDSP;
-        SoLuong = soLuong;
+    public GioHang(String idSP, String tenSP, String imgUrl, int gia, int soLuong) {
+        this.idSP = idSP;
+        this.tenSP = tenSP;
+        this.imgUrl = imgUrl;
+        Gia = gia;
+        this.soLuong = soLuong;
     }
 
-    public int getIDGH() {
-        return IDGH;
+    public String getIdSP() {
+        return idSP;
     }
 
-    public void setIDGH(int IDGH) {
-        this.IDGH = IDGH;
+    public void setIdSP(String idSP) {
+        this.idSP = idSP;
     }
 
-    public String getID() {
-        return ID;
+    public String getTenSP() {
+        return tenSP;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setTenSP(String tenSP) {
+        this.tenSP = tenSP;
     }
 
-    public String getIDSP() {
-        return IDSP;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setIDSP(String IDSP) {
-        this.IDSP = IDSP;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public int getGia() {
+        return Gia;
+    }
+
+    public void setGia(int gia) {
+        Gia = gia;
     }
 
     public int getSoLuong() {
-        return SoLuong;
+        return soLuong;
     }
 
     public void setSoLuong(int soLuong) {
-        SoLuong = soLuong;
+        this.soLuong = soLuong;
     }
 }

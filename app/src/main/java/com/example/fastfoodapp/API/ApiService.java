@@ -1,9 +1,12 @@
 package com.example.fastfoodapp.API;
 
 import com.example.fastfoodapp.Models.Banner;
+import com.example.fastfoodapp.Models.ChiTietDonHang;
 import com.example.fastfoodapp.Models.DanhMuc;
+import com.example.fastfoodapp.Models.DonHang;
 import com.example.fastfoodapp.Models.HinhAnh;
 import com.example.fastfoodapp.Models.NguoiDung;
+import com.example.fastfoodapp.Models.SHOP;
 import com.example.fastfoodapp.Models.SanPham;
 import com.example.fastfoodapp.Utils.Common;
 import com.google.gson.Gson;
@@ -16,7 +19,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -35,11 +40,24 @@ public interface ApiService {
 
 
     //tài khoản
+
+    @GET("  api/NguoiDungs/checkUsername")
+    Call<NguoiDung> getNDbyUsername(@Query("username") String username);
+
     @GET("api/NguoiDungs/checksdt")
-    Call<NguoiDung> checkSDT(@Query("sdt") String sdt);
+    Call<NguoiDung> getNDbySDT(@Query("sdt") String sdt);
+
+    @GET("api/NguoiDungs/checkUsernameExist")
+    Call<Boolean> checkUsernameExist(@Query("username") String username);
+
+    @GET("api/NguoiDungs/checkSDTexist")
+    Call<Boolean> checkSDTExist(@Query("sdt") String sdt);
+
+    @POST("api/NguoiDungs/PostNguoiDung")
+    Call<Integer> dangKy(@Body NguoiDung nguoiDung);
 
     @GET("api/NguoiDungs/DangNhap")
-    Call<Boolean> dangNhap(@Query("sdt") String sdt, @Query("password") String password);
+    Call<Boolean> dangNhap(@Query("username") String username, @Query("password") String password);
 
     //hình ảnh sản phẩm
     @GET("api/HinhAnhs/getImageSP")
@@ -56,4 +74,16 @@ public interface ApiService {
 
     @GET("api/SanPhams/getSPbyDM")
     Call<List<SanPham>> getSPbyDM(@Query("idDM") String idDM);
+
+    @GET("api/SanPhams/getShop")
+    Call<SHOP> getShop(@Query("idshop") String idshop);
+
+    @POST("api/DonHangs/PostDonHang")
+    Call<Integer> addDonHang(@Body DonHang donHang);
+
+    @GET("api/ChiTietDonHangs/getCTdonHang")
+    Call<List<ChiTietDonHang>> getCTDonHang(@Query("idDH") int idDH);
+
+    @POST("api/ChiTietDonHangs/PostCTDonHang")
+    Call<Integer> addCTDonHang(@Body ChiTietDonHang ctDOnHang);
 }
